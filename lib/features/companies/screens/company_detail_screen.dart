@@ -17,7 +17,6 @@
 //   6. Founders   — list of founders
 //   7. Actions    — careers + website buttons
 
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -182,10 +181,7 @@ class _HeaderBlock extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _CompanyLogo(
-            logoUrl: company.logoUrl,
-            commonName: company.commonName,
-          ),
+          _CompanyLogo(commonName: company.commonName),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -218,14 +214,13 @@ class _HeaderBlock extends StatelessWidget {
 }
 
 class _CompanyLogo extends StatelessWidget {
-  const _CompanyLogo({required this.logoUrl, required this.commonName});
-  final String? logoUrl;
+  const _CompanyLogo({required this.commonName});
   final String commonName;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final fallback = CircleAvatar(
+    return CircleAvatar(
       radius: 32,
       backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.15),
       child: Text(
@@ -234,27 +229,6 @@ class _CompanyLogo extends StatelessWidget {
           fontSize: 22,
           fontWeight: FontWeight.bold,
           color: theme.colorScheme.primary,
-        ),
-      ),
-    );
-
-    if (logoUrl == null || logoUrl!.isEmpty) return fallback;
-
-    return CircleAvatar(
-      radius: 32,
-      backgroundColor: Colors.white,
-      child: ClipOval(
-        child: CachedNetworkImage(
-          imageUrl: logoUrl!,
-          width: 52,
-          height: 52,
-          fit: BoxFit.contain,
-          placeholder: (_, _) => const SizedBox(
-            width: 22,
-            height: 22,
-            child: CircularProgressIndicator(strokeWidth: 2),
-          ),
-          errorWidget: (_, _, _) => fallback,
         ),
       ),
     );
