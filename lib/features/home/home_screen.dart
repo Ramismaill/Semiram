@@ -7,6 +7,7 @@
 //   - Timeline   → TimelineScreen  (Phase 9)
 //   - Bookmarks  → BookmarksScreen (Phase 10)
 //   - Search     → SearchScreen    (Phase 7)
+//   - Reset DB   → (Temporary) delete database and rebuild
 //
 // Body: scrollable list of all 20 companies; tap to open detail.
 // The hero banner uses a gradient with a large champagne-gold count.
@@ -20,6 +21,7 @@ import '../companies/screens/company_detail_screen.dart';
 import '../compare/screens/compare_screen.dart';
 import '../search/screens/search_screen.dart';
 import '../timeline/screens/timeline_screen.dart';
+import '../../shared/widgets/company_logo.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -326,6 +328,11 @@ class _CompanyTile extends StatelessWidget {
     final theme = Theme.of(context);
     return ListTile(
       contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      leading: CompanyLogo(
+        domain: company.domain,
+        name: company.commonName,
+        size: 40,
+      ),
       title: Text(
         company.commonName,
         style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),

@@ -31,6 +31,7 @@ class Company {
   final String shortDescription;
   final List<String> founderNames;
   final String? logoUrl;
+  final String domain; // ✅ الحقل الجديد
   final String createdAt;
   final String updatedAt;
 
@@ -57,6 +58,7 @@ class Company {
     required this.shortDescription,
     required this.founderNames,
     this.logoUrl,
+    required this.domain, // ✅ أضيف هنا
     required this.createdAt,
     required this.updatedAt,
   });
@@ -87,6 +89,7 @@ class Company {
       shortDescription: map['short_description'] as String,
       founderNames: parseJsonArray(map['founder_names'] as String?),
       logoUrl: map['logo_url'] as String?,
+      domain: map['domain'] as String? ?? '', // ✅ أضيف هنا
       createdAt: map['created_at'] as String,
       updatedAt: map['updated_at'] as String,
     );
@@ -118,6 +121,7 @@ class Company {
       'short_description': shortDescription,
       'founder_names': encodeJsonArray(founderNames),
       'logo_url': logoUrl,
+      'domain': domain, // ✅ أضيف هنا
       'created_at': createdAt,
       'updated_at': updatedAt,
     };

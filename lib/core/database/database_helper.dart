@@ -16,6 +16,7 @@
 // Usage:
 //   final db = await DatabaseHelper.instance.database;
 //   final results = await db.query('companies');
+
 import 'package:flutter/foundation.dart' show kIsWeb;
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
@@ -92,29 +93,28 @@ class DatabaseHelper {
   }
 
   /// Called when the schema version increases.
-  /// For now, we do a destructive upgrade (drop and recreate).
-  /// Production apps should use proper migrations.
+  /// ✅ تم التعديل: أصبحت ترقية غير مدمرة (Non-destructive migration).
+  /// بدلاً من حذف الجداول، نضيف الأعمدة الجديدة فقط.
   Future<void> _onUpgrade(Database db, int oldVersion, int newVersion) async {
-    // For MVP: simple destructive upgrade. Replace with proper migrations later.
+    // تجاهل التحذير المطبوع
     // ignore: avoid_print
     print('Upgrading database from v$oldVersion to v$newVersion');
-    final tables = [
-      'companies_fts',
-      'events_fts',
-      'careers_fts',
-      'bookmarks',
-      'company_careers',
-      'company_node_history',
-      'products',
-      'careers_roles',
-      'industry_events',
-      'technology_nodes',
-      'companies',
-    ];
-    for (final table in tables) {
-      await db.execute('DROP TABLE IF EXISTS $table');
+
+    // 📌 الترقية من الإصدار 1 إلى 2: إضافة عمود 'domain' في جدول companies
+    if (oldVersion < 2) {
+      try {
+        await db.execute('ALTER TABLE companies ADD COLUMN domain TEXT');
+        // ignore: avoid_print
+        print('✅ Migration: Added domain column to companies table.');
+      } catch (e) {
+        // لو العمود موجود مسبقاً (مثلاً في حالة إعادة التشغيل)، نتجاهل الخطأ
+        // ignore: avoid_print
+        print('⚠️ Migration: Column domain might already exist. $e');
+      }
     }
-    await _onCreate(db, newVersion);
+
+    // هنا هنضيف ترقيات مستقبلية لو احتجناها، مثلاً:
+    // if (oldVersion < 3) { await db.execute('...'); }
   }
 
   /// Closes the database. Useful for testing or app shutdown.

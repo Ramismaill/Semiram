@@ -23,6 +23,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/models/company.dart';
 import '../../../core/repositories/bookmarks_repository.dart';
+import '../../../shared/widgets/company_logo.dart'; // ✅ استيراد الشعار
 
 class CompanyDetailScreen extends StatelessWidget {
   const CompanyDetailScreen({super.key, required this.company});
@@ -181,7 +182,12 @@ class _HeaderBlock extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          _CompanyLogo(commonName: company.commonName),
+          // ✅ استخدم CompanyLogo بدلاً من CircleAvatar القديم
+          CompanyLogo(
+            domain: company.domain,
+            name: company.commonName,
+            size: 64,
+          ),
           const SizedBox(width: 16),
           Expanded(
             child: Column(
@@ -213,27 +219,7 @@ class _HeaderBlock extends StatelessWidget {
   }
 }
 
-class _CompanyLogo extends StatelessWidget {
-  const _CompanyLogo({required this.commonName});
-  final String commonName;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return CircleAvatar(
-      radius: 32,
-      backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.15),
-      child: Text(
-        commonName.substring(0, 1).toUpperCase(),
-        style: TextStyle(
-          fontSize: 22,
-          fontWeight: FontWeight.bold,
-          color: theme.colorScheme.primary,
-        ),
-      ),
-    );
-  }
-}
+// حذفنا _CompanyLogo القديم لأنه لم يعد مستخدماً
 
 class _TickerBadge extends StatelessWidget {
   const _TickerBadge({required this.symbol});

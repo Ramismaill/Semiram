@@ -18,7 +18,8 @@
 
 class DatabaseSchema {
   /// Database schema version. Increment when schema changes.
-  static const int version = 1;
+  /// ✅ تم الترقية من 1 إلى 2 (لإضافة عمود domain)
+  static const int version = 2;
 
   /// Database filename.
   static const String databaseName = 'semiram.db';
@@ -50,6 +51,7 @@ class DatabaseSchema {
       short_description TEXT NOT NULL,
       founder_names TEXT,
       logo_url TEXT,
+      domain TEXT,              -- ✅ العمود الجديد (لشعارات Clearbit)
       created_at TEXT NOT NULL,
       updated_at TEXT NOT NULL
     )

@@ -1,25 +1,40 @@
 # Semiram
 
+![Flutter](https://img.shields.io/badge/Flutter-3.41-02569B?logo=flutter)
+![Dart](https://img.shields.io/badge/Dart-3.11-0175C2?logo=dart)
+![SQLite](https://img.shields.io/badge/SQLite-sqflite-003B57?logo=sqlite)
+![Platforms](https://img.shields.io/badge/Platforms-Android%20%7C%20Web-brightgreen)
+
 > The semiconductor world, decoded.
 
-An offline-first mobile application that brings together the 20 leading semiconductor companies and the industry's historical timeline from 1947 to the present day.
+An **offline-first** Flutter application covering the 20 leading semiconductor companies and the industry's historical timeline — from the invention of the transistor (1947) to TSMC's 2nm production (2025). Runs on Android and in the browser from a single codebase.
 
-**Course:** EFC304 — Mobile Application Development  
-**University:** İstanbul Topkapı University, Computer Engineering  
-**Student:** Ram Ismail (24040301052)  
-**Instructor:** Prof. Dr. Buket İşler  
-**Semester:** Spring 2026
+**🌐 Live Demo:** [ramismaill.github.io/Semiram](https://ramismaill.github.io/Semiram)
+**🎬 Video Walkthrough:** [YouTube](https://youtu.be/m2DDahdYed0)
+
+---
+
+## 📸 Screenshots
+
+<p float="left">
+  <img src="screenshots/home.png" width="200" alt="Home" />
+  <img src="screenshots/detail.png" width="200" alt="Company Detail" />
+  <img src="screenshots/search.png" width="200" alt="Search" />
+  <img src="screenshots/timeline.png" width="200" alt="Timeline" />
+</p>
 
 ---
 
 ## ✨ Features
 
 - **20 semiconductor companies** with full profiles — CEO, revenue, market cap, key technologies, notable customers
+- **Real company logos** via Clearbit, with letter-avatar fallback so offline mode still works
 - **19 historical industry events** (1947–2025), categorized and chronologically ordered
 - **Relevance-ranked search** across 6 columns (exact match → prefix match → ecosystem matches)
 - **Side-by-side comparison** of any two companies
 - **Polymorphic bookmarks** with optimistic UI and rollback
-- **Completely offline** — no internet connection required
+- **Full web support** — SQLite runs in the browser via WebAssembly with IndexedDB persistence
+- **Completely offline** — no internet connection required for core features
 - **Dark theme** with gold accent inspired by semiconductor fabrication aesthetics
 
 ---
@@ -28,10 +43,10 @@ An offline-first mobile application that brings together the 20 leading semicond
 
 - **Language:** Dart 3.11.4
 - **Framework:** Flutter 3.41.6
-- **Database:** SQLite via `sqflite` 2.3.0
+- **Database:** SQLite via `sqflite` (mobile/desktop) and `sqflite_common_ffi_web` (browser, WASM + IndexedDB)
 - **Utilities:** `path`, `intl`, `path_provider`, `url_launcher`
 
-No off-curriculum technologies were used. Pure Flutter widgets + raw SQL.
+Pure Flutter widgets + raw SQL. The same SQL runs on every platform.
 
 ---
 
@@ -52,7 +67,7 @@ lib/
 │   ├── compare/        → CompareScreen
 │   ├── bookmarks/      → BookmarksScreen
 │   └── timeline/       → TimelineScreen
-├── shared/             → Reusable widgets and utils
+├── shared/             → Reusable widgets (CompanyLogo, …)
 └── main.dart
 ```
 
@@ -85,7 +100,7 @@ CREATE TABLE bookmarks (
 );
 ```
 
-A single table stores bookmarks for three different entity types, with database-level integrity via `CHECK` and `UNIQUE` constraints.
+A single table stores bookmarks for three different entity types, with database-level integrity via `CHECK` and `UNIQUE` constraints. Schema migrations are versioned (`onUpgrade`), e.g. v2 added the `domain` column powering company logos.
 
 ---
 
@@ -128,7 +143,7 @@ Four layers of error control:
 
 - Flutter SDK 3.41.6+
 - Dart 3.11.4+
-- Android SDK or Xcode
+- Android SDK, Xcode, or Chrome (for web)
 
 ### Run
 
@@ -136,15 +151,27 @@ Four layers of error control:
 git clone https://github.com/Ramismaill/Semiram.git
 cd Semiram
 flutter pub get
-flutter run
+flutter run            # Android/iOS
+flutter run -d chrome  # Web
+```
+
+### Build for web
+
+```bash
+flutter build web --release
+# output in build/web
 ```
 
 ---
 
 ## 📄 License
 
-Academic project. Developed for EFC304 at İstanbul Topkapı University.
+Educational project, developed for EFC304 — Mobile Application Development at İstanbul Topkapı University (Software Engineering). All company data is publicly available and used for educational purposes. Semiram is not affiliated with or endorsed by any of the mentioned companies.
 
 ---
 
-**Built with Flutter and SQLite — May 2026**
+## 👤 Author
+
+**Ram Ismail** — [GitHub](https://github.com/Ramismaill)
+
+**Built with Flutter and SQLite — 2026**

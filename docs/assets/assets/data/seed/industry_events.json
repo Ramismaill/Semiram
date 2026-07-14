@@ -1,0 +1,173 @@
+[
+  {
+    "id": 1,
+    "event_title": "Bell Labs invents the transistor",
+    "event_description": "John Bardeen, Walter Brattain, and William Shockley demonstrate the first working transistor at AT&T Bell Laboratories. This semiconductor device replaces vacuum tubes and launches the modern electronics era.",
+    "event_date": "1947-12-23",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 2,
+    "event_title": "First integrated circuit",
+    "event_description": "Jack Kilby at Texas Instruments demonstrates the first working integrated circuit, combining multiple electronic components on a single piece of semiconductor material.",
+    "event_date": "1958-09-12",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 3,
+    "event_title": "Moore's Law published",
+    "event_description": "Gordon Moore publishes his observation in Electronics magazine that the number of transistors on a chip doubles roughly every two years. This becomes the industry's guiding economic principle for decades.",
+    "event_date": "1965-04-19",
+    "event_category": "milestone",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 4,
+    "event_title": "Intel founded",
+    "event_description": "Robert Noyce and Gordon Moore leave Fairchild Semiconductor to found Intel, focusing initially on memory chips. Intel will go on to dominate the CPU market for decades.",
+    "event_date": "1968-07-18",
+    "event_category": "founding",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 5,
+    "event_title": "AMD founded",
+    "event_description": "Jerry Sanders founds Advanced Micro Devices in Sunnyvale, California, initially as a second-source manufacturer for Intel and Fairchild designs.",
+    "event_date": "1969-05-01",
+    "event_category": "founding",
+    "is_major": 0,
+    "related_company_id": null
+  },
+  {
+    "id": 6,
+    "event_title": "Intel 4004 launches",
+    "event_description": "Intel releases the 4004, the first commercially available microprocessor. It packs 2,300 transistors and runs at 740 kHz, fitting an entire CPU on a single chip for the first time.",
+    "event_date": "1971-11-15",
+    "event_category": "product",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 7,
+    "event_title": "TSMC founded",
+    "event_description": "Morris Chang founds Taiwan Semiconductor Manufacturing Company in Hsinchu, pioneering the pure-play foundry model. TSMC manufactures chips for fabless designers, decoupling design from manufacturing.",
+    "event_date": "1987-02-21",
+    "event_category": "founding",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 8,
+    "event_title": "NVIDIA founded",
+    "event_description": "Jensen Huang, Chris Malachowsky, and Curtis Priem found NVIDIA in Sunnyvale to build graphics accelerators for PC games and workstations.",
+    "event_date": "1993-04-05",
+    "event_category": "founding",
+    "is_major": 0,
+    "related_company_id": null
+  },
+  {
+    "id": 9,
+    "event_title": "First GPU: GeForce 256",
+    "event_description": "NVIDIA launches the GeForce 256, marketed as 'the world's first GPU'. The chip integrates transform, lighting, and rasterization on one piece of silicon and ushers in the era of programmable graphics.",
+    "event_date": "1999-08-31",
+    "event_category": "product",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 10,
+    "event_title": "iPhone launches mobile chip era",
+    "event_description": "Apple releases the original iPhone, igniting the smartphone revolution. The shift creates massive demand for energy-efficient mobile SoCs and reshapes the chip industry around ARM-based designs.",
+    "event_date": "2007-06-29",
+    "event_category": "milestone",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 11,
+    "event_title": "TSMC 7nm volume production",
+    "event_description": "TSMC enters volume production at the 7-nanometer process node, leapfrogging Intel and cementing Taiwan as the global leader in advanced semiconductor manufacturing for fabless customers like Apple, AMD, and NVIDIA.",
+    "event_date": "2018-04-01",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 12,
+    "event_title": "Global chip shortage begins",
+    "event_description": "COVID-19 lockdowns disrupt supply chains while remote work and gaming spike demand. Automakers, console makers, and electronics companies face critical shortages that persist for over two years.",
+    "event_date": "2020-03-15",
+    "event_category": "crisis",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 13,
+    "event_title": "US CHIPS and Science Act signed",
+    "event_description": "President Biden signs the CHIPS Act, allocating roughly 52 billion USD to subsidize US semiconductor manufacturing and research. The law catalyzes new fabs by Intel, TSMC, Samsung, and Micron in the United States.",
+    "event_date": "2022-08-09",
+    "event_category": "policy",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 14,
+    "event_title": "ChatGPT ignites AI chip demand",
+    "event_description": "OpenAI releases ChatGPT, triggering a global race for generative AI compute. NVIDIA's data center GPUs become the dominant AI accelerator and the company's market capitalization eventually crosses 3 trillion USD.",
+    "event_date": "2022-11-30",
+    "event_category": "milestone",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 15,
+    "event_title": "NVIDIA Blackwell B200 announced",
+    "event_description": "NVIDIA unveils the Blackwell B200 architecture at GTC 2024. Each B200 packs 208 billion transistors built on TSMC's custom 4NP process and is designed specifically for trillion-parameter AI training.",
+    "event_date": "2024-03-18",
+    "event_category": "product",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 16,
+    "event_title": "TSMC Arizona begins 4nm production",
+    "event_description": "TSMC's Fab 21 in Phoenix, Arizona begins volume production of 4nm chips — the first leading-edge fab outside Taiwan. This marks the return of advanced semiconductor manufacturing to US soil after decades, and the first tangible result of the 2022 CHIPS Act.",
+    "event_date": "2024-12-06",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 17,
+    "event_title": "TSMC expands Arizona to 165 billion USD",
+    "event_description": "TSMC announces an additional 100 billion USD investment in Arizona, raising total commitment to 165 billion USD. The expansion includes six fabs, two advanced packaging facilities, and a dedicated R&D center — the largest foreign direct investment in a US greenfield project in history.",
+    "event_date": "2025-03-03",
+    "event_category": "policy",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 18,
+    "event_title": "Intel 18A enters volume production",
+    "event_description": "Intel begins volume production of its 18A (1.8nm) process node — the first sub-2nm node in mass production worldwide. The node features PowerVia backside power delivery, a technology TSMC plans to adopt only in later generations.",
+    "event_date": "2025-09-01",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  },
+  {
+    "id": 19,
+    "event_title": "TSMC N2 enters series production",
+    "event_description": "TSMC begins series production of its N2 (2nm) process node featuring nanosheet (GAA) transistors. Apple's next-generation A-series and M-series chips are among the first adopters, alongside AI accelerators from NVIDIA and AMD.",
+    "event_date": "2025-12-15",
+    "event_category": "breakthrough",
+    "is_major": 1,
+    "related_company_id": null
+  }
+]
