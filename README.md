@@ -1,3 +1,111 @@
+# Semiram
+
+![Flutter](https://img.shields.io/badge/Flutter-3.41-blue)
+![Dart](https://img.shields.io/badge/Dart-3.11-blue)
+![SQLite](https://img.shields.io/badge/SQLite-3.0-green)
+![License](https://img.shields.io/badge/License-MIT-yellow)
+![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Web-brightgreen)
+
+> *The semiconductor world, decoded.*
+
+**Semiram** is an offline-first app and open reference for the semiconductor industry — the companies that make it, the technology behind it, and the history that shaped it. It exists to make an industry most people never think about (but that quietly runs the modern world) understandable to anyone curious enough to look.
+
+It covers **30 companies** across the full supply chain — fabs, equipment makers, IP licensors, EDA tools — and **19 milestones** from the invention of the transistor in 1947 to TSMC's 2nm node in 2025.
+
+This started as a student project. It isn't anymore — it's an ongoing effort to build the clearest, most accessible map of the semiconductor world available anywhere, and it will keep growing: more companies, deeper history, live market data, and eventually a place where anyone — students, engineers, investors, or the just-curious — can actually understand how a chip gets from sand to your pocket.
+
+---
+
+## 🌐 Live Demo
+
+Try Semiram in your browser:
+**[https://ramismaill.github.io/Semiram/](https://ramismaill.github.io/Semiram/)**
+
+📹 **Video Walkthrough:** [YouTube](https://youtu.be/m2DDahdYed0) *(recorded on an earlier version — UI has since been updated)*
+
+---
+
+## 📸 Screenshots
+
+<p float="left">
+  <img src="screenshots/home.jpg" width="200" alt="Home" />
+  <img src="screenshots/detail.jpg" width="200" alt="Company Detail" />
+  <img src="screenshots/search.jpg" width="200" alt="Search" />
+  <img src="screenshots/timeline.jpg" width="200" alt="Timeline" />
+  <img src="screenshots/compare.jpg" width="200" alt="Compare" />
+  <img src="screenshots/bookmarks.jpg" width="200" alt="Bookmarks" />
+</p>
+
+---
+
+## ✨ Features
+
+### Core
+- **30 semiconductor companies** – full profiles: CEO, revenue, market cap, key technologies, notable customers
+- **19 historical milestones** – from 1947 to 2025, categorized and chronologically ordered
+- **Relevance‑ranked search** – across 6 fields (exact match → prefix → ecosystem)
+- **Side‑by‑side comparison** – compare any two companies head to head
+- **Polymorphic bookmarks** – save companies, events, and (future) roles
+- **Offline‑first** – no internet required for core features
+
+### v2.0
+- **Real company logos** – high‑resolution local assets with network fallback
+- **Full web support** – SQLite runs in the browser via WebAssembly + IndexedDB
+- **Light/Dark theme toggle** – persisted across sessions
+- **Expanded coverage** – from 20 to 30 companies, adding Europe, Japan, and equipment makers
+
+---
+
+## 🗺️ Where This Is Going
+
+Semiram is version 2 of a project meant to outgrow its origins. Planned direction:
+
+- Expanding well past 30 companies — the goal is comprehensive coverage of the global supply chain, not a curated sample
+- Live market data (stock prices, market cap tracking) via public APIs
+- Deeper historical content — not just milestones, but the *why* behind each one
+- A learning path for people with zero background in semiconductors, not just a reference for people who already know the space
+
+If you're interested in contributing, following along, or have ideas — reach out (see below).
+
+---
+
+## 🛠️ Tech Stack
+
+| Component | Technology |
+|-----------|------------|
+| **Language** | Dart 3.11.4 |
+| **Framework** | Flutter 3.41.6 |
+| **Database** | SQLite via `sqflite` (mobile) + `sqflite_common_ffi_web` (web/WASM) |
+| **State** | SetState + FutureBuilder |
+| **Theme** | `shared_preferences` for persistent Dark/Light mode |
+| **Assets** | High-res local logo assets with network fallback |
+| **Utilities** | `intl`, `path_provider`, `url_launcher` |
+
+---
+
+## 🏛️ Architecture
+
+The project follows the **Repository Pattern** for strict separation of concerns:
+
+```
+lib/
+├── core/
+│   ├── database/       → DatabaseHelper, SeedLoader, Schema
+│   ├── models/         → Company, IndustryEvent
+│   ├── repositories/   → CompaniesRepository, EventsRepository, BookmarksRepository
+│   └── theme/          → AppTheme (Light/Dark definitions)
+├── features/
+│   ├── home/           → HomeScreen (list + hero banner)
+│   ├── companies/      → CompanyDetailScreen
+│   ├── search/         → SearchScreen (relevance-ranked)
+│   ├── compare/        → CompareScreen (side-by-side)
+│   ├── bookmarks/      → BookmarksScreen (polymorphic)
+│   └── timeline/       → TimelineScreen (19 events)
+├── shared/
+│   └── widgets/        → CompanyLogo (local → network → letter fallback)
+└── main.dart
+```
+
 - **SQL queries** live only in `repositories/`
 - **Data models** live only in `models/`
 - **UI logic** lives only in `features/`
@@ -105,9 +213,9 @@ powershell -ExecutionPolicy Bypass -File tools\download_logos.ps1 -Token YOUR_LO
 
 ## 📄 License
 
-Educational project developed for **EFC304 – Mobile Application Development** at **İstanbul Topkapı University** (Software Engineering).
-All company data is publicly available and used for educational purposes.
-**Semiram is not affiliated with or endorsed by any of the mentioned companies.**
+Semiram's source code is licensed under the [MIT License](LICENSE) — free to use, modify, and build on.
+
+Company information (revenue, leadership, market cap, etc.) is drawn from publicly available sources and is provided for educational and informational purposes only. Semiram is an independent project and is **not affiliated with, endorsed by, or sponsored by** any of the companies referenced.
 
 ---
 
@@ -115,4 +223,4 @@ All company data is publicly available and used for educational purposes.
 
 **Ram Ismail** – [GitHub](https://github.com/Ramismaill) | [LinkedIn](https://www.linkedin.com/in/ram-ismail-060333266/)
 
-Built with ❤️ and Flutter – 2026
+Built with Flutter — 2026
