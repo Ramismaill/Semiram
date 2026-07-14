@@ -15,6 +15,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/models/company.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../core/repositories/companies_repository.dart';
 import '../../companies/screens/company_detail_screen.dart';
 
@@ -93,16 +94,16 @@ class _SearchScreenState extends State<SearchScreen> {
           autofocus: true,
           onChanged: _onChanged,
           textInputAction: TextInputAction.search,
-          style: const TextStyle(fontSize: 17, color: Colors.white),
+          style: TextStyle(fontSize: 17, color: theme.colorScheme.onSurface),
           decoration: InputDecoration(
             hintText: 'Search companies, technologies, customers…',
-            hintStyle: const TextStyle(color: Colors.white38, fontSize: 15),
+            hintStyle: TextStyle(color: context.textFaint, fontSize: 15),
             border: InputBorder.none,
             prefixIcon: Icon(Icons.search, color: theme.colorScheme.primary),
             suffixIcon: hasText
                 ? IconButton(
                     icon: const Icon(Icons.clear),
-                    color: Colors.white60,
+                    color: context.textSubtle,
                     onPressed: _clearSearch,
                     tooltip: 'Clear',
                   )
@@ -147,15 +148,15 @@ class _PromptView extends StatelessWidget {
               color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
             ),
             const SizedBox(height: 16),
-            const Text(
+            Text(
               'Type to search',
-              style: TextStyle(fontSize: 17, color: Colors.white60),
+              style: TextStyle(fontSize: 17, color: context.textSubtle),
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Find companies by name, technology, or customer',
               textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 13, color: Colors.white38),
+              style: TextStyle(fontSize: 13, color: context.textFaint),
             ),
           ],
         ),
@@ -176,17 +177,17 @@ class _NoResultsView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.search_off, size: 56, color: Colors.white30),
+            Icon(Icons.search_off, size: 56, color: context.textFaint),
             const SizedBox(height: 16),
             Text(
               'No results for "$query"',
-              style: const TextStyle(fontSize: 17, color: Colors.white70),
+              style: TextStyle(fontSize: 17, color: context.textMedium),
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 8),
-            const Text(
+            Text(
               'Try a different keyword',
-              style: TextStyle(fontSize: 13, color: Colors.white38),
+              style: TextStyle(fontSize: 13, color: context.textFaint),
             ),
           ],
         ),
@@ -242,9 +243,9 @@ class _ResultsHeader extends StatelessWidget {
       ),
       child: Text(
         '$count ${count == 1 ? "result" : "results"}',
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 13,
-          color: Colors.white70,
+          color: context.textMedium,
           letterSpacing: 0.5,
         ),
       ),
@@ -268,11 +269,11 @@ class _SearchResultTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 4),
         child: Text(
           '${company.headquartersCity}, ${company.headquartersCountry}',
-          style: const TextStyle(color: Colors.white60, fontSize: 13),
+          style: TextStyle(color: context.textSubtle, fontSize: 13),
         ),
       ),
       trailing: company.tickerSymbol == null
-          ? const Icon(Icons.chevron_right, color: Colors.white38)
+          ? Icon(Icons.chevron_right, color: context.textFaint)
           : Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -303,7 +304,7 @@ class _SearchResultTile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 4),
-                const Icon(Icons.chevron_right, color: Colors.white38),
+                Icon(Icons.chevron_right, color: context.textFaint),
               ],
             ),
       onTap: () {

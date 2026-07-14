@@ -22,6 +22,9 @@ import '../compare/screens/compare_screen.dart';
 import '../search/screens/search_screen.dart';
 import '../timeline/screens/timeline_screen.dart';
 import '../../shared/widgets/company_logo.dart';
+import '../../main.dart' show themeController;
+
+enum _HomeMenuAction { compare, timeline, bookmarks, toggleTheme }
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -71,6 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           'Semiram',
           style: TextStyle(
@@ -80,24 +84,67 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.compare_arrows),
-            onPressed: _openCompare,
-            tooltip: 'Compare',
-          ),
-          IconButton(
-            icon: const Icon(Icons.timeline),
-            onPressed: _openTimeline,
-            tooltip: 'Timeline',
-          ),
-          IconButton(
-            icon: const Icon(Icons.bookmark_border),
-            onPressed: _openBookmarks,
-            tooltip: 'Bookmarks',
-          ),
-          IconButton(
             icon: const Icon(Icons.search),
             onPressed: _openSearch,
             tooltip: 'Search',
+          ),
+          PopupMenuButton<_HomeMenuAction>(
+            tooltip: 'Menu',
+            onSelected: (action) {
+              switch (action) {
+                case _HomeMenuAction.compare:
+                  _openCompare();
+                case _HomeMenuAction.timeline:
+                  _openTimeline();
+                case _HomeMenuAction.bookmarks:
+                  _openBookmarks();
+                case _HomeMenuAction.toggleTheme:
+                  themeController.toggle();
+              }
+            },
+            itemBuilder: (context) => [
+              const PopupMenuItem(
+                value: _HomeMenuAction.compare,
+                child: ListTile(
+                  leading: Icon(Icons.compare_arrows),
+                  title: Text('Compare'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem(
+                value: _HomeMenuAction.timeline,
+                child: ListTile(
+                  leading: Icon(Icons.timeline),
+                  title: Text('Timeline'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuItem(
+                value: _HomeMenuAction.bookmarks,
+                child: ListTile(
+                  leading: Icon(Icons.bookmark_border),
+                  title: Text('Bookmarks'),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+              const PopupMenuDivider(),
+              PopupMenuItem(
+                value: _HomeMenuAction.toggleTheme,
+                child: ListTile(
+                  leading: Icon(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? Icons.light_mode_outlined
+                        : Icons.dark_mode_outlined,
+                  ),
+                  title: Text(
+                    Theme.of(context).brightness == Brightness.dark
+                        ? 'Light mode'
+                        : 'Dark mode',
+                  ),
+                  contentPadding: EdgeInsets.zero,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -139,9 +186,12 @@ class _LoadingView extends StatelessWidget {
             strokeWidth: 2.5,
           ),
           const SizedBox(height: 20),
-          const Text(
+          Text(
             'Initializing semiconductor database…',
-            style: TextStyle(color: Color(0xFF9BA4B5), letterSpacing: 0.3),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+              letterSpacing: 0.3,
+            ),
           ),
         ],
       ),
@@ -161,7 +211,8 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Color(0xFFCF6679)),
+            Icon(Icons.error_outline,
+                size: 48, color: Theme.of(context).colorScheme.error),
             const SizedBox(height: 16),
             const Text(
               'Failed to load data',
@@ -171,7 +222,9 @@ class _ErrorView extends StatelessWidget {
             Text(
               error,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Color(0xFF9BA4B5)),
+              style: TextStyle(
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+              ),
             ),
           ],
         ),
@@ -185,10 +238,12 @@ class _EmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
         'No companies in the database.',
-        style: TextStyle(color: Color(0xFF9BA4B5)),
+        style: TextStyle(
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
+        ),
       ),
     );
   }

@@ -13,6 +13,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/models/industry_event.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../core/repositories/events_repository.dart';
 
 class TimelineScreen extends StatefulWidget {
@@ -62,10 +63,10 @@ class _EmptyView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Text(
         'No events in the timeline.',
-        style: TextStyle(color: Colors.white60),
+        style: TextStyle(color: context.textSubtle),
       ),
     );
   }
@@ -83,7 +84,7 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.redAccent),
+            Icon(Icons.error_outline, size: 48, color: context.cs.error),
             const SizedBox(height: 16),
             const Text(
               'Failed to load timeline',
@@ -93,7 +94,7 @@ class _ErrorView extends StatelessWidget {
             Text(
               error,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white70),
+              style: TextStyle(color: context.textMedium),
             ),
           ],
         ),
@@ -166,7 +167,7 @@ class _CountBanner extends StatelessWidget {
           Text(
             'Semiconductor industry milestones',
             style: theme.textTheme.bodyMedium?.copyWith(
-              color: Colors.white70,
+              color: context.textMedium,
               letterSpacing: 0.5,
             ),
           ),
@@ -304,12 +305,12 @@ class _EventTile extends StatelessWidget {
                       ),
                     ),
                     if (event.isMajor)
-                      const Padding(
-                        padding: EdgeInsets.only(left: 8, top: 2),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 8, top: 2),
                         child: Icon(
                           Icons.star,
                           size: 16,
-                          color: Colors.amberAccent,
+                          color: context.cs.primary,
                         ),
                       ),
                   ],
@@ -318,9 +319,9 @@ class _EventTile extends StatelessWidget {
                   const SizedBox(height: 6),
                   Text(
                     event.eventDescription!,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 13,
-                      color: Colors.white70,
+                      color: context.textMedium,
                       height: 1.45,
                     ),
                   ),
@@ -334,9 +335,9 @@ class _EventTile extends StatelessWidget {
                     Expanded(
                       child: Text(
                         event.formattedDate(),
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 11,
-                          color: Colors.white38,
+                          color: context.textFaint,
                         ),
                         textAlign: TextAlign.end,
                       ),

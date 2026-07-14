@@ -18,8 +18,8 @@
 
 class DatabaseSchema {
   /// Database schema version. Increment when schema changes.
-  /// ✅ تم الترقية من 1 إلى 2 (لإضافة عمود domain)
-  static const int version = 2;
+  /// v2: added domain column. v3: expanded seed to 30 companies.
+  static const int version = 3;
 
   /// Database filename.
   static const String databaseName = 'semiram.db';

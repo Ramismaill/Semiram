@@ -34,6 +34,11 @@ class SeedLoader {
     // Future: await _loadCompanyCareers(db);
   }
 
+  /// Re-runs the companies seed. Idempotent: existing rows are replaced
+  /// by id (bookmarks stay valid because ids are stable), new rows are
+  /// inserted. Used by migrations when the seed data grows.
+  static Future<void> reseedCompanies(Database db) => _loadCompanies(db);
+
   static Future<void> _loadCompanies(Database db) async {
     final raw =
         await rootBundle.loadString('assets/data/seed/companies.json');
@@ -44,7 +49,11 @@ class SeedLoader {
       final map = Map<String, dynamic>.from(item as Map);
       map['created_at'] = now;
       map['updated_at'] = now;
-      await db.insert('companies', map);
+      await db.insert(
+        'companies',
+        map,
+        conflictAlgorithm: ConflictAlgorithm.replace,
+      );
     }
   }
 

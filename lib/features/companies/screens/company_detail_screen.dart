@@ -22,6 +22,7 @@ import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../../core/models/company.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../core/repositories/bookmarks_repository.dart';
 import '../../../shared/widgets/company_logo.dart'; // ✅ استيراد الشعار
 
@@ -203,7 +204,7 @@ class _HeaderBlock extends StatelessWidget {
                 Text(
                   '${company.headquartersCity}, ${company.headquartersCountry}',
                   style: theme.textTheme.bodyMedium?.copyWith(
-                    color: Colors.white60,
+                    color: context.textSubtle,
                   ),
                 ),
                 if (company.tickerSymbol != null) ...[
@@ -332,8 +333,8 @@ class _StatRow extends StatelessWidget {
             width: 110,
             child: Text(
               label,
-              style: const TextStyle(
-                color: Colors.white60,
+              style: TextStyle(
+                color: context.textSubtle,
                 fontSize: 13,
                 letterSpacing: 0.5,
               ),
@@ -375,7 +376,8 @@ class _AboutBlock extends StatelessWidget {
           const _SectionHeader(title: 'About'),
           Text(
             company.shortDescription,
-            style: const TextStyle(fontSize: 14, height: 1.5, color: Colors.white70),
+            style: TextStyle(
+                fontSize: 14, height: 1.5, color: context.textMedium),
           ),
         ],
       ),

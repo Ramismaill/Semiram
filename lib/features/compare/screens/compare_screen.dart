@@ -16,6 +16,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 import '../../../core/models/company.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../core/repositories/companies_repository.dart';
 
 class CompareScreen extends StatefulWidget {
@@ -234,9 +235,9 @@ class _PromptView extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'Pick two companies to compare',
-            style: TextStyle(fontSize: 16, color: Colors.white60),
+            style: TextStyle(fontSize: 16, color: context.textSubtle),
           ),
         ],
       ),
@@ -249,11 +250,11 @@ class _PartialPromptView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(40),
+    return Padding(
+      padding: const EdgeInsets.all(40),
       child: Text(
         'Select the second company',
-        style: TextStyle(fontSize: 14, color: Colors.white60),
+        style: TextStyle(fontSize: 14, color: context.textSubtle),
         textAlign: TextAlign.center,
       ),
     );
@@ -265,17 +266,17 @@ class _SameWarningView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.all(40),
+    return Padding(
+      padding: const EdgeInsets.all(40),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(Icons.info_outline, color: Colors.orangeAccent),
-          SizedBox(width: 12),
+          Icon(Icons.info_outline, color: context.cs.tertiary),
+          const SizedBox(width: 12),
           Flexible(
             child: Text(
               'Please select two different companies',
-              style: TextStyle(color: Colors.orangeAccent),
+              style: TextStyle(color: context.cs.tertiary),
             ),
           ),
         ],
@@ -457,8 +458,8 @@ class _StatRow extends StatelessWidget {
             width: 110,
             child: Text(
               label,
-              style: const TextStyle(
-                color: Colors.white60,
+              style: TextStyle(
+                color: context.textSubtle,
                 fontSize: 13,
                 letterSpacing: 0.5,
               ),
@@ -516,10 +517,10 @@ class _LabeledText extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Colors.white70,
+            color: context.textMedium,
           ),
         ),
         const SizedBox(height: 4),
@@ -545,17 +546,17 @@ class _LabeledChips extends StatelessWidget {
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 13,
             fontWeight: FontWeight.w600,
-            color: Colors.white70,
+            color: context.textMedium,
           ),
         ),
         const SizedBox(height: 8),
         if (items.isEmpty)
-          const Text(
+          Text(
             '—',
-            style: TextStyle(color: Colors.white38, fontSize: 13),
+            style: TextStyle(color: context.textFaint, fontSize: 13),
           )
         else
           Wrap(

@@ -15,6 +15,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../core/models/company.dart';
+import '../../../core/theme/app_theme.dart';
 import '../../../core/repositories/bookmarks_repository.dart';
 import '../../companies/screens/company_detail_screen.dart';
 
@@ -113,15 +114,15 @@ class _EmptyView extends StatelessWidget {
             color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.3),
           ),
           const SizedBox(height: 16),
-          const Text(
+          Text(
             'No bookmarks yet',
-            style: TextStyle(fontSize: 17, color: Colors.white60),
+            style: TextStyle(fontSize: 17, color: context.textSubtle),
           ),
           const SizedBox(height: 8),
-          const Text(
+          Text(
             'Open any company and tap the bookmark icon to save it here.',
             textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 13, color: Colors.white38),
+            style: TextStyle(fontSize: 13, color: context.textFaint),
           ),
         ],
       ),
@@ -141,7 +142,7 @@ class _ErrorView extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Icon(Icons.error_outline, size: 48, color: Colors.redAccent),
+            Icon(Icons.error_outline, size: 48, color: context.cs.error),
             const SizedBox(height: 16),
             const Text(
               'Failed to load bookmarks',
@@ -151,7 +152,7 @@ class _ErrorView extends StatelessWidget {
             Text(
               error,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white70),
+              style: TextStyle(color: context.textMedium),
             ),
           ],
         ),
@@ -210,9 +211,9 @@ class _CountBanner extends StatelessWidget {
       ),
       child: Text(
         '$count saved ${count == 1 ? "company" : "companies"}',
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 13,
-          color: Colors.white70,
+          color: context.textMedium,
           letterSpacing: 0.5,
         ),
       ),
@@ -239,11 +240,11 @@ class _BookmarkTile extends StatelessWidget {
         padding: const EdgeInsets.only(top: 4),
         child: Text(
           '${company.headquartersCity}, ${company.headquartersCountry}',
-          style: const TextStyle(color: Colors.white60, fontSize: 13),
+          style: TextStyle(color: context.textSubtle, fontSize: 13),
         ),
       ),
       trailing: company.tickerSymbol == null
-          ? const Icon(Icons.chevron_right, color: Colors.white38)
+          ? Icon(Icons.chevron_right, color: context.textFaint)
           : Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -268,7 +269,7 @@ class _BookmarkTile extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 4),
-                const Icon(Icons.chevron_right, color: Colors.white38),
+                Icon(Icons.chevron_right, color: context.textFaint),
               ],
             ),
       onTap: onTap,

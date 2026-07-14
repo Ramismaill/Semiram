@@ -113,8 +113,13 @@ class DatabaseHelper {
       }
     }
 
-    // هنا هنضيف ترقيات مستقبلية لو احتجناها، مثلاً:
-    // if (oldVersion < 3) { await db.execute('...'); }
+    // v3: seed grew from 20 to 30 companies — reseed (replace by id,
+    // bookmarks keep working because existing ids are stable).
+    if (oldVersion < 3) {
+      await SeedLoader.reseedCompanies(db);
+      // ignore: avoid_print
+      print('✅ Migration: Reseeded companies (v3, 30 companies).');
+    }
   }
 
   /// Closes the database. Useful for testing or app shutdown.
