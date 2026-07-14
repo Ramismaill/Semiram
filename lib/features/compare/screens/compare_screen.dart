@@ -397,6 +397,9 @@ class _ComparisonTable extends StatelessWidget {
 
   static String _formatMoney(int? amount) {
     if (amount == null) return '—';
+    if (amount >= 1000000000000) {
+      return '\$${(amount / 1000000000000).toStringAsFixed(2)}T';
+    }
     if (amount >= 1000000000) {
       return '\$${(amount / 1000000000).toStringAsFixed(1)}B';
     }

@@ -3,7 +3,7 @@
 ![Flutter](https://img.shields.io/badge/Flutter-3.41-blue)
 ![Dart](https://img.shields.io/badge/Dart-3.11-blue)
 ![SQLite](https://img.shields.io/badge/SQLite-3.0-green)
-![License](https://img.shields.io/badge/License-MIT-yellow)
+![License](https://img.shields.io/badge/License-PolyForm%20Noncommercial-red)
 ![Platform](https://img.shields.io/badge/Platform-Android%20%7C%20Web-brightgreen)
 
 > *The semiconductor world, decoded.*
@@ -213,9 +213,11 @@ powershell -ExecutionPolicy Bypass -File tools\download_logos.ps1 -Token YOUR_LO
 
 ## 📄 License
 
-Semiram's source code is licensed under the [MIT License](LICENSE) — free to use, modify, and build on.
+Semiram's source code is licensed under the [PolyForm Noncommercial License 1.0.0](LICENSE).
 
-Company information (revenue, leadership, market cap, etc.) is drawn from publicly available sources and is provided for educational and informational purposes only. Semiram is an independent project and is **not affiliated with, endorsed by, or sponsored by** any of the companies referenced.
+**In plain words:** you're free to use, study, and modify this code for personal, educational, and noncommercial purposes — but you must keep the copyright notice crediting Ram Ismail as the original author, and **any commercial use (selling, monetizing, or building commercial products on it) requires prior written permission** from the copyright holder. For commercial licensing inquiries, contact me via GitHub or LinkedIn (links below).
+
+Company information (revenue, leadership, market cap, etc.) is drawn from publicly available sources — company earnings releases, SEC filings, and public market-cap data — and was last refreshed in **July 2026**. It is provided for educational and informational purposes only. Semiram is an independent project and is **not affiliated with, endorsed by, or sponsored by** any of the companies referenced.
 
 ---
 

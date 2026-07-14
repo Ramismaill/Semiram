@@ -19,7 +19,8 @@
 class DatabaseSchema {
   /// Database schema version. Increment when schema changes.
   /// v2: added domain column. v3: expanded seed to 30 companies.
-  static const int version = 3;
+  /// v4: refreshed company data to July 2026 values.
+  static const int version = 4;
 
   /// Database filename.
   static const String databaseName = 'semiram.db';

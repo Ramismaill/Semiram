@@ -120,6 +120,13 @@ class DatabaseHelper {
       // ignore: avoid_print
       print('✅ Migration: Reseeded companies (v3, 30 companies).');
     }
+
+    // v4: company data refreshed to July 2026 (CEOs, revenue, market caps).
+    if (oldVersion < 4 && oldVersion >= 3) {
+      await SeedLoader.reseedCompanies(db);
+      // ignore: avoid_print
+      print('✅ Migration: Reseeded companies (v4, July 2026 data).');
+    }
   }
 
   /// Closes the database. Useful for testing or app shutdown.

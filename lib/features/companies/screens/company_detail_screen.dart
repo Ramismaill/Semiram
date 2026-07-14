@@ -308,6 +308,9 @@ class _StatsBlock extends StatelessWidget {
 
   /// Formats large USD amounts as compact strings (e.g. $22.7B, $850M).
   static String _formatLargeMoney(int amount) {
+    if (amount >= 1000000000000) {
+      return '\$${(amount / 1000000000000).toStringAsFixed(2)}T';
+    }
     if (amount >= 1000000000) {
       return '\$${(amount / 1000000000).toStringAsFixed(1)}B';
     }
