@@ -288,7 +288,7 @@ class _HeroBanner extends StatelessWidget {
     final theme = Theme.of(context);
     return Container(
       width: double.infinity,
-      padding: const EdgeInsets.fromLTRB(24, 28, 24, 32),
+      padding: const EdgeInsets.fromLTRB(24, 18, 24, 20),
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
@@ -328,7 +328,7 @@ class _HeroBanner extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 12),
           // Large count
           Row(
             crossAxisAlignment: CrossAxisAlignment.baseline,
@@ -337,20 +337,20 @@ class _HeroBanner extends StatelessWidget {
               Text(
                 '$count',
                 style: TextStyle(
-                  fontSize: 56,
+                  fontSize: 40,
                   fontWeight: FontWeight.w800,
                   color: theme.colorScheme.primary,
                   height: 1.0,
                   letterSpacing: -1,
                 ),
               ),
-              const SizedBox(width: 14),
+              const SizedBox(width: 10),
               Padding(
-                padding: const EdgeInsets.only(bottom: 6),
+                padding: const EdgeInsets.only(bottom: 4),
                 child: Text(
                   'companies',
                   style: TextStyle(
-                    fontSize: 20,
+                    fontSize: 16,
                     fontWeight: FontWeight.w500,
                     color: theme.colorScheme.onSurface,
                     letterSpacing: 0.2,
@@ -382,23 +382,25 @@ class _CompanyTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return ListTile(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+      dense: true,
+      visualDensity: const VisualDensity(vertical: -2),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 2),
       leading: CompanyLogo(
         domain: company.domain,
         name: company.commonName,
-        size: 40,
+        size: 30,
       ),
       title: Text(
         company.commonName,
-        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+        style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 14),
       ),
       subtitle: Padding(
-        padding: const EdgeInsets.only(top: 4),
+        padding: const EdgeInsets.only(top: 2),
         child: Text(
           '${company.headquartersCity}, ${company.headquartersCountry}',
           style: TextStyle(
             color: theme.colorScheme.onSurface.withValues(alpha: 0.55),
-            fontSize: 13,
+            fontSize: 11.5,
             letterSpacing: 0.1,
           ),
         ),
@@ -413,10 +415,10 @@ class _CompanyTile extends StatelessWidget {
               children: [
                 Container(
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                      const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
                   decoration: BoxDecoration(
                     color: theme.colorScheme.primary.withValues(alpha: 0.12),
-                    borderRadius: BorderRadius.circular(6),
+                    borderRadius: BorderRadius.circular(5),
                     border: Border.all(
                       color: theme.colorScheme.primary.withValues(alpha: 0.4),
                     ),
@@ -424,7 +426,7 @@ class _CompanyTile extends StatelessWidget {
                   child: Text(
                     company.tickerSymbol!,
                     style: TextStyle(
-                      fontSize: 11,
+                      fontSize: 9.5,
                       fontWeight: FontWeight.w700,
                       color: theme.colorScheme.primary,
                       letterSpacing: 0.6,

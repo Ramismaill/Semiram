@@ -60,10 +60,12 @@ Try Semiram in your browser:
 
 Semiram is version 2 of a project meant to outgrow its origins. Planned direction:
 
-- Expanding well past 30 companies — the goal is comprehensive coverage of the global supply chain, not a curated sample
-- Live market data (stock prices, market cap tracking) via public APIs
+Semiram is growing into a **learning platform for the semiconductor world** — think of what W3Schools did for web development or Duolingo for languages, applied to the chip industry. It is deliberately **not** a financial data tool: no live stock tickers, no market tracking — that scope belongs to Yahoo Finance and friends. Semiram teaches how the industry works:
+
+- Structured learning paths for people with zero background — how a chip is designed, manufactured, and shipped
+- Expanding well past 30 companies toward comprehensive coverage of the global supply chain
 - Deeper historical content — not just milestones, but the *why* behind each one
-- A learning path for people with zero background in semiconductors, not just a reference for people who already know the space
+- Interactive explanations of core concepts: lithography, process nodes, fabless vs. foundry, EDA, packaging
 
 If you're interested in contributing, following along, or have ideas — reach out (see below).
 
