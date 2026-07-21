@@ -11,6 +11,7 @@
 // the timeline in the present moment.
 
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 import '../../../core/models/industry_event.dart';
 import '../../../core/theme/app_theme.dart';
@@ -235,7 +236,7 @@ class _TodayMarker extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
                 Text(
-                  'TODAY  ·  MAY 2026',
+                  'TODAY  ·  ${DateFormat('MMMM yyyy').format(DateTime.now()).toUpperCase()}',
                   style: TextStyle(
                     fontSize: 10.5,
                     fontWeight: FontWeight.w700,
